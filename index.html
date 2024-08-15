@@ -255,7 +255,7 @@
                 <div class="flex justify-center space-x-6 mt-8 animate-popUp">
                     <a href="https://www.facebook.com/profile.php?id=100075690131842" target="_blank" class="text-white hover:text-accent transition transform hover:scale-125"><i class="fab fa-facebook-f text-3xl"><img src="./facebook.png" width="50px" height="50px" alt="facebook"></i></a>
                     <a href="https://www.instagram.com/incrivel_design_studio/" target="_blank" class="text-white hover:text-accent transition transform hover:scale-125"><i class="fab fa-instagram text-3xl"><img src="./instagram.png" width="50px" height="50px" alt="instagram"></i></a>
-                    <a href="https://wa.me/919054871719?text=welcome" target="_blank" class="text-white hover:text-accent transition transform hover:scale-125"><i class="fab fa-pinterest-p text-3xl"><img src="./whatsap.png" width="50px" height="50px" alt="whatsap"></i></a>
+                    <a href="https://wa.me/918200835327?text=welcome" target="_blank" class="text-white hover:text-accent transition transform hover:scale-125"><i class="fab fa-pinterest-p text-3xl"><img src="./whatsap.png" width="50px" height="50px" alt="whatsap"></i></a>
                 </div>
             </div>
         </section>
@@ -371,12 +371,13 @@
                     <p class="mb-4"><strong>Phone:</strong> +91 8200835327</p>
                     <p class="mb-4"><strong>Gmail:</strong> incriveldesigninterior@gmail.com </p>
                     <p class="mb-4"><strong>Address:</strong> 208, Fortune Imperia, Above HDFC Bank, Near Speedwell Party Plot Road, Mota Mava, Rajkot, Gujarat-360005.</p>
-                    <form>
-                        <input type="text" placeholder="Name" class="w-full mb-4 p-2 bg-gray-600 rounded">
-                        <input type="email" placeholder="Email" class="w-full mb-4 p-2 bg-gray-600 rounded">
-                        <textarea placeholder="Message" rows="4" class="w-full mb-4 p-2 bg-gray-600 rounded"></textarea>
+                    <form id="contactForm">
+                        <input type="text" placeholder="Name" id="name" class="w-full mb-4 p-2 bg-gray-600 rounded">
+                        <input type="email" placeholder="Email" id="email" class="w-full mb-4 p-2 bg-gray-600 rounded">
+                        <textarea placeholder="Message" id="message" rows="4" class="w-full mb-4 p-2 bg-gray-600 rounded"></textarea>
                         <button type="submit" class="bg-secondary text-white px-6 py-2 rounded-full hover:bg-opacity-80 transition w-full transform hover:scale-105">Send Message</button>
                     </form>
+                    
                 </div>
             </div>
         </section>    </main>
@@ -426,7 +427,22 @@
             });
         });
 
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting the usual way
         
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        // Construct the WhatsApp URL
+        const phoneNumber = '+918200835327'; // Your WhatsApp number with country code
+        const text = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
+        const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(text)}`;
+
+        // Redirect to WhatsApp
+        window.open(whatsappURL, '_blank');
+    });
     </script>
 </body>
 </html>
